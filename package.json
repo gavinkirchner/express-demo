@@ -1,0 +1,38 @@
+{
+  "name": "express-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "babel-node tools/startMessage",
+    "start": "babel-node src/index",
+    "start:compiled": "node dist/index",
+    "lint": "esw src index",
+    "lint:watch": "npm run lint -- --watch",
+    "debug": "npm run compile && npm run start:compiled",
+    "clean": "rimraf ./dist && mkdir dist",
+    "compile": "babel ./src --out-dir ./dist",
+    "build": "npm run lint && npm run clean && npm run compile"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "colors": "^1.1.2",
+    "eslint": "^4.4.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-watch": "^3.1.2",
+    "rimraf": "^2.6.1",
+    "webpack": "^3.5.5"
+  }
+}
