@@ -1,17 +1,25 @@
-import * as authorModel from '../models/author';
+import AuthorModel from '../models/author';
+import NotFoundError from '../util/NotFoundError';
 
 export function getAllAuthors(req, res, next) {
-  res.send(authorModel.getAllAuthors());
+  AuthorModel.getAllAuthors()
+    .then((authors) => {
+      res.send(authors);
+    });
 }
 
 export function getAuthor(req, res, next) {
+  const id = req.params.id;
 
-  const author = authorModel.getAuthorById(req.params.id);
-
-  if (!author) {
-    const err = new Error('Not Found');
-    next(err);
-  }
-
-  res.send(author);
+  AuthorModel.getAuthorById(req.params.id)
+    .then(author => {
+      if (!author) {
+        next(new NotFoundError(`An author with id ${id} does not exist.`));
+      } else {
+        res.send(author);
+      }
+    })
+    .catch(err => {
+      next(err);
+    });  
 }

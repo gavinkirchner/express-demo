@@ -13,19 +13,39 @@ const authors = [
     id: 'dan-wahlin',
     firstName: 'Dan',
     lastName: 'Wahlin'
+  },
+  {
+    id: '1',
+    firstName: 'Cory1',
+    lastName: 'House1'
+  },
+  {
+    id: '1',
+    firstName: 'Cory1',
+    lastName: 'House1'
   }
 ];
 
-export function getAllAuthors() {
-  return authors;
-}
-
-export function getAuthorById(authorId) {
-  const result = authors.filter(author => author.id === authorId);
-
-  if (result.length !== 1) {
-    return null;
+class AuthorModel {
+  // this class mocks a database call to get/set author data
+  static getAllAuthors() {
+    return new Promise((resolve, reject) => {
+      resolve(Object.assign([], authors));
+    });
   }
 
-  return result[0];
+  static getAuthorById(id) {
+    return new Promise((resolve, reject) => {
+      const result = authors.filter(author => author.id === id);
+      if (result.length > 1) { 
+        reject(new Error(`This error represents a SQLException or something similar. There was more than one author defined for id ${id}`));
+      } else if (result.length === 0) {
+        resolve(null);
+      } else {
+        resolve(result[0]);
+      }
+    });
+  }
 }
+
+export default AuthorModel;
