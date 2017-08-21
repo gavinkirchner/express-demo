@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "prestart": "babel-node tools/startMessage",
     "start": "babel-node src/index",
     "start:compiled": "node dist/index",
@@ -12,7 +12,7 @@
     "lint:watch": "npm run lint -- --watch",
     "debug": "npm run compile && npm run start:compiled",
     "clean": "rimraf ./dist && mkdir dist",
-    "compile": "babel ./src --out-dir ./dist",
+    "compile": "babel ./src --out-dir ./dist --ignore test.js --source-maps",
     "build": "npm run lint && npm run clean && npm run compile"
   },
   "author": "",
@@ -25,6 +25,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
     "babel-preset-env": "^1.6.0",
@@ -33,6 +34,8 @@
     "eslint": "^4.4.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-watch": "^3.1.2",
+    "jest": "^20.0.4",
+    "regenerator-runtime": "^0.11.0",
     "rimraf": "^2.6.1",
     "webpack": "^3.5.5"
   }
