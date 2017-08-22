@@ -1,9 +1,9 @@
 import express from 'express';
-import * as authorHandler from '../handlers/author';
+import AuthorHandler from '../handlers/authorHandler';
 
 const authorRouter = express.Router(); 
 
-authorRouter.get('/', authorHandler.getAllAuthors);
-authorRouter.get('/:id', authorHandler.getAuthor);
+authorRouter.get('/', AuthorHandler.getAllAuthors);
+authorRouter.get('/:id', AuthorHandler.getAuthor);
 
 export default authorRouter;

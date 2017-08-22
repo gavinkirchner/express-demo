@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "prestart": "babel-node tools/startMessage",
     "start": "babel-node src/index",
     "start:compiled": "node dist/index",

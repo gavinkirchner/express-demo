@@ -5,6 +5,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Tests",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest",
+      "args": ["--runInBand"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "outFiles": [],
+      "console": "internalConsole",
+      "sourceMaps": true,
+      "stopOnEntry": false
+    },
+    {
       "name": "Launch with babel-node",
       "type": "node",
       "request": "launch",
