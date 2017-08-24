@@ -2,18 +2,19 @@
   "name": "express-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --config ./jest-config.js",
+    "integration:test": "jest --config ./integrationTests/jest-config.js",
     "prestart": "babel-node tools/startMessage",
-    "start": "babel-node src/index",
-    "start:compiled": "node dist/index",
+    "start": "babel-node tools/server",
+    "start:compiled": "node dist/app",
     "lint": "esw src index",
     "lint:watch": "npm run lint -- --watch",
     "debug": "npm run compile && npm run start:compiled",
     "clean": "rimraf ./dist && mkdir dist",
     "compile": "babel ./src --out-dir ./dist --ignore test.js --source-maps",
-    "build": "npm run lint && npm run clean && npm run compile"
+    "build": "npm run test && npm run lint && npm run clean && npm run compile"
   },
   "author": "",
   "license": "ISC",
@@ -37,6 +38,7 @@
     "jest": "^20.0.4",
     "regenerator-runtime": "^0.11.0",
     "rimraf": "^2.6.1",
+    "supertest": "^3.0.0",
     "webpack": "^3.5.5"
   }
 }

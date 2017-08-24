@@ -6,7 +6,6 @@ import indexRouter from './routes/index';
 import ConsoleLogger from './handlers/genericHandlers/consoleLogger';
 import ErrorHandler from './handlers/genericHandlers/errorHandler';
 
-const port = 3001;
 const app = express();
 
 // register consolelogger
@@ -21,6 +20,5 @@ app.use('/', indexRouter);
 // register the error handler
 app.use(ErrorHandler.setResponseStatus);
 
-app.listen(port, function () {
-  console.log(`Example app listening on port ${port}...`.green);
-});
+export default app;
+

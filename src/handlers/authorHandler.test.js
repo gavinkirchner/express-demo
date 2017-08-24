@@ -4,7 +4,6 @@ import NotFoundError from '../util/NotFoundError';
 import { flushPromises } from '../util/TestUtils';
 import AuthorModel from '../models/author';
 
-
 describe('authorHandler Tests', () => {
   describe('getAllAuthors()', () => {
     const authors = [{id: 1}, {id: 2}];
